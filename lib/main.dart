@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-import './widgets/user_transactions.dart';
+
+
+import './widgets/new_transaction.dart';
+import './models/transaction.dart';
+import './widgets/transaction_list.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -14,7 +19,49 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  
+
+
+
+  final List<Transaction> _userTransactions = [
+    Transaction(
+        id: 't001', title: 'Food bill', amount: 500.46, date: DateTime.now()),
+    Transaction(
+        id: 't002', title: 'New Bag', amount: 700.46, date: DateTime.now()),
+  ];
+
+  void _addNewTransaction(String title,double amount){
+    final newTx=Transaction(
+      id: DateTime.now().toString(),
+      title: title,
+      amount: amount,
+      date: DateTime.now(),
+    );
+
+    setState(() {
+      _userTransactions.add(newTx);
+    }); 
+    Navigator.of(context).pop();
+    // to exit from modal sheet after submit data 
+  }
+
+  void _startNewTransaction(BuildContext ctx){
+    showModalBottomSheet(
+      context: ctx,
+      builder: (bCtx){
+        return NewTransaction(_addNewTransaction);
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +70,7 @@ class MyHomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: (){},
+            onPressed:()=> _startNewTransaction(context),
           )
         ],
       ),
@@ -39,16 +86,14 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               elevation: 5.0,
             ),
-            UserTransactions(),
+            TransactionList(_userTransactions),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: (){
-
-        },
+        onPressed:()=> _startNewTransaction(context),
       ),
     );
   }
