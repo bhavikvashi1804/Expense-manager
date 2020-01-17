@@ -23,6 +23,9 @@ class MyHomePage extends StatelessWidget {
     Transaction(id: 't002',title: 'New Bag',amount: 1000.46,date: DateTime.now()),
   ];
 
+  final titleController=TextEditingController();
+  final amountController=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,8 +55,10 @@ class MyHomePage extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Title',
                     ),
+                    controller: titleController,
                   ),
                   TextField(
+                    controller: amountController,
                     decoration: InputDecoration(
                       labelText: 'Amount',
                     ),
