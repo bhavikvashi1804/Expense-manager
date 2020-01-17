@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Expense Manager',
       home: MyHomePage(),
     );
   }
@@ -27,10 +27,9 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Expense Manager'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Card(
@@ -41,6 +40,33 @@ class MyHomePage extends StatelessWidget {
             color: Colors.blue,
             elevation: 5.0,
 
+          ),
+          Card(
+            elevation: 8.0,
+            margin: EdgeInsets.all(10),
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Title',
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                  ),
+                  FlatButton(
+                    onPressed: (){
+
+                    },
+                    child: Text('Add Transaction',style: TextStyle(color: Colors.purple),),
+                  ),
+                ],
+              ),
+            ),
           ),
           Column(
             children: _transaction.map(
