@@ -20,6 +20,8 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Card(
             child: Container(
@@ -31,6 +33,7 @@ class MyHomePage extends StatelessWidget {
 
           ),
           Card(
+            color: Colors.orange,
             child: Text('List of transactions'),
           ),
 
