@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import './widgets/user_transactions.dart';
 
-
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -17,10 +15,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
- 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +22,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Expense Manager'),
       ),
       body: SingleChildScrollView(
-              child: Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Card(
@@ -38,9 +32,7 @@ class MyHomePage extends StatelessWidget {
               ),
               color: Colors.blue,
               elevation: 5.0,
-
             ),
-            
             UserTransactions(),
           ],
         ),
