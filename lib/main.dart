@@ -49,7 +49,9 @@ class MyHomePage extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
                         padding: EdgeInsets.all(10),
-                        child: Text(transaction.amount.toString(),style: TextStyle(color:Colors.purple,fontWeight: FontWeight.bold,fontSize: 20),),
+                        child: Text('\$ ${transaction.amount}',
+                          style: TextStyle(color:Colors.purple,fontWeight: FontWeight.bold,fontSize: 20),
+                        ),
                         decoration: BoxDecoration(border: Border.all(color: Colors.purple,width: 2,)),
                       ),
                       Column(
