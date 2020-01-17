@@ -23,7 +23,8 @@ class TransactionList extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    '₹${_userTransactions[index].amount}',
+                    '₹${_userTransactions[index].amount.toStringAsFixed(2)}',
+                    //toStringAsFixed(2) how many digit after . 
                     style: TextStyle(
                         color: Colors.purple,
                         fontWeight: FontWeight.bold,

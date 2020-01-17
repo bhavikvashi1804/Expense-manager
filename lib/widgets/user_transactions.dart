@@ -16,7 +16,7 @@ class _UserTransactionsState extends State<UserTransactions> {
     Transaction(
         id: 't001', title: 'Food bill', amount: 500.46, date: DateTime.now()),
     Transaction(
-        id: 't002', title: 'New Bag', amount: 1000.46, date: DateTime.now()),
+        id: 't002', title: 'New Bag', amount: 700.46, date: DateTime.now()),
   ];
 
   void _addNewTransaction(String title,double amount){
