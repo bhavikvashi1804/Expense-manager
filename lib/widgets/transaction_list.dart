@@ -13,62 +13,55 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 400,
-      child: _userTransactions.isEmpty? 
-        Column(
-          children: <Widget>[
-            Text('No Transactions',style: Theme.of(context).textTheme.title,),
-            SizedBox(
-              height: 20,
-
-            ),
-            Image.asset('assets/images/no_tx.png',fit: BoxFit.cover,),
-          ],
-        )
-        :ListView.builder(
-        itemBuilder: (ctx,index){
-
-          return Card(
-            child: Row(
+      child: _userTransactions.isEmpty
+          ? Column(
               children: <Widget>[
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    '₹${_userTransactions[index].amount.toStringAsFixed(2)}',
-                    //toStringAsFixed(2) how many digit after . 
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColorDark,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                    width: 2,
-                  )),
+                Text(
+                  'No Transactions',
+                  style: Theme.of(context).textTheme.title,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      _userTransactions[index].title,
-                      style:Theme.of(context).textTheme.title,
+                SizedBox(
+                  height: 20,
+                ),
+                Image.asset(
+                  'assets/images/no_tx.png',
+                  fit: BoxFit.cover,
+                ),
+              ],
+            )
+          : ListView.builder(
+              itemBuilder: (ctx, index) {
+                return Card(
+                  elevation: 5,
+                  margin: EdgeInsets.symmetric(vertical: 8,horizontal: 5),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        //padding to make space between text and border
+                        child: FittedBox(
+                          //to overcome problem of text is going after circle
+                          child: Text(
+                            '₹${_userTransactions[index].amount.toStringAsFixed(2)}',
+                          ),
+                        ),
+                      ),
                     ),
-                    Text(
+                    title: Text(
+                      _userTransactions[index].title,
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                    subtitle: Text(
                       DateFormat('dd MMM, yyyy hh:mm:ss aaa')
                           .format(_userTransactions[index].date),
                       style: TextStyle(color: Colors.grey),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                );
+              },
+              itemCount: _userTransactions.length,
             ),
-          );
-
-        },
-        itemCount: _userTransactions.length ,
-        
-      ),
     );
   }
 }
