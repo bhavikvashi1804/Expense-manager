@@ -44,12 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-  final List<Transaction> _userTransactions = [
-    Transaction(
-        id: 't001', title: 'Food bill', amount: 500.46, date: DateTime.now()),
-    Transaction(
-        id: 't002', title: 'New Bag', amount: 700.46, date: DateTime.now()),
-  ];
+  final List<Transaction> _userTransactions = [];
 
   void _addNewTransaction(String title,double amount){
     final newTx=Transaction(

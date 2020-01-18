@@ -19,6 +19,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/flutter_t.jpg
+    - assets/images/no_tx.png
 
 
  
