@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import './widgets/new_transaction.dart';
 import './models/transaction.dart';
 import './widgets/transaction_list.dart';
+import './widgets/chart.dart';
 
 
 void main() => runApp(MyApp());
@@ -70,6 +71,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
+
+  //to send last 7 days transaction
+  List<Transaction> get getRecentTransaction{
+    //.where takes element from list and check below condition
+    return _userTransactions.where(
+      (tx){
+        //if tx date after the specfied date in isAfter then this object is return to getRecentTransction
+        return tx.date.isAfter(
+          DateTime.now().subtract(
+            Duration(days: 7),
+          )
+        );
+      }
+    ).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,14 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Card(
-              child: Container(
-                width: double.infinity,
-                child: Text('Chart !'),
-              ),
-              color: Colors.blue,
-              elevation: 5.0,
-            ),
+            Chart(getRecentTransaction),
             TransactionList(_userTransactions),
           ],
         ),
