@@ -26,13 +26,13 @@ class TransactionList extends StatelessWidget {
                     '₹${_userTransactions[index].amount.toStringAsFixed(2)}',
                     //toStringAsFixed(2) how many digit after . 
                     style: TextStyle(
-                        color: Colors.purple,
+                        color: Theme.of(context).primaryColorDark,
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: Colors.purple,
+                    color: Theme.of(context).primaryColor,
                     width: 2,
                   )),
                 ),
