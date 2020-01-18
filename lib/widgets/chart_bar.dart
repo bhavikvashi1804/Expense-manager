@@ -13,10 +13,13 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        FittedBox(
-          //to solve problem : if one value is too large then that perticular bar goes to down 
-          //this box makes size of font smaller if content is large
-          child: Text('₹${spendingAmount.toStringAsFixed(0)}')
+        Container(
+          height: 20,
+          child: FittedBox(
+            //to solve problem : if one value is too large then that perticular bar goes to down 
+            //this box makes size of font smaller if content is large
+            child: Text('₹${spendingAmount.toStringAsFixed(0)}')
+          ),
         ),
         SizedBox(
           height: 4,
