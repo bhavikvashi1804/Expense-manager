@@ -54,63 +54,71 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 8.0,
-      margin: EdgeInsets.all(5),
-      child: Container(
-        padding: EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            TextField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: 'Title',
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 8.0,
+        margin: EdgeInsets.all(5),
+        child: Container(
+          padding: EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+            bottom: 10+MediaQuery.of(context).viewInsets.bottom,
+            //this line add padding according to modal according to virtual keyboard
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              TextField(
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  labelText: 'Title',
+                ),
+                controller: titleController,
+                onSubmitted: (_)=>submitData(),
               ),
-              controller: titleController,
-              onSubmitted: (_)=>submitData(),
-            ),
-            TextField(
-              controller: amountController,
-              onSubmitted: (_)=>submitData(),
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Amount',
+              TextField(
+                controller: amountController,
+                onSubmitted: (_)=>submitData(),
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: 'Amount',
+                ),
               ),
-            ),
-            Container(
-              height: 70,
-              padding: EdgeInsets.all(10),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(selectedDate==null?
-                      'No date chosen!':
-                      'Picked Date: ${DateFormat.yMEd().format(selectedDate)}'
+              Container(
+                height: 70,
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(selectedDate==null?
+                        'No date chosen!':
+                        'Picked Date: ${DateFormat.yMEd().format(selectedDate)}'
+                      ),
                     ),
-                  ),
-                  FlatButton(
-                    textColor: Theme.of(context).primaryColor,
-                    child: Text(
-                      'Choose Date',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    FlatButton(
+                      textColor: Theme.of(context).primaryColor,
+                      child: Text(
+                        'Choose Date',
+                        style: TextStyle(fontWeight: FontWeight.bold),
 
+                      ),
+                      onPressed: _presentDatePicker,
                     ),
-                    onPressed: _presentDatePicker,
-                  ),
-                ],
+                  ],
 
+                ),
               ),
-            ),
-            FlatButton(
-              onPressed: submitData,
-              textColor: Colors.white,
-              color: Theme.of(context).primaryColor,
-              child: Text(
-                'Add Transaction',
+              FlatButton(
+                onPressed: submitData,
+                textColor: Colors.white,
+                color: Theme.of(context).primaryColor,
+                child: Text(
+                  'Add Transaction',
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
