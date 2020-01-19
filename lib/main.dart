@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: (
                 MediaQuery.of(context).size.height //get the total height
                 -appBar1.preferredSize.height //remove appBar height
-                -MediaQuery.of(context).padding.top)*0.4, //remove status bar height
+                -MediaQuery.of(context).padding.top)*0.3, //remove status bar height
                 
               child: Chart(getRecentTransaction)
             ),
@@ -130,14 +130,14 @@ class _MyHomePageState extends State<MyHomePage> {
               height: (
                 MediaQuery.of(context).size.height
                 -appBar1.preferredSize.height
-                -MediaQuery.of(context).padding.top)*0.6,
+                -MediaQuery.of(context).padding.top)*0.7,
               //here we also subtract the height of appBar
               child: TransactionList(_userTransactions,_deleteTransaction)
             ),
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed:()=> _startNewTransaction(context),
