@@ -110,9 +110,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+    final mediaQuery=MediaQuery.of(context);
+    //store mediaQuery object
     
-    final isLandscape=MediaQuery.of(context).orientation==Orientation.landscape;
+    final isLandscape=mediaQuery.orientation==Orientation.landscape;
     
+   
+
     final appBar1=AppBar(
         title: Text('Expense Manager'),
         actions: <Widget>[
@@ -126,9 +132,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final txListWidget= Container(
               height: (
-                MediaQuery.of(context).size.height
+                mediaQuery.size.height
                 -appBar1.preferredSize.height
-                -MediaQuery.of(context).padding.top)*0.7,
+                -mediaQuery.padding.top)*0.7,
               //here we also subtract the height of appBar
               child: TransactionList(_userTransactions,_deleteTransaction)
     );
@@ -159,9 +165,9 @@ class _MyHomePageState extends State<MyHomePage> {
             if (!isLandscape)
               //if not landscape then display chart
               Container(
-                height: (MediaQuery.of(context).size.height -
+                height: (mediaQuery.size.height -
                         appBar1.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
+                        mediaQuery.padding.top) *
                     0.3,
                 child: Chart(getRecentTransaction),
               ),
@@ -170,9 +176,9 @@ class _MyHomePageState extends State<MyHomePage> {
             if (isLandscape) _showChart
                 //is landscape then according to swtich change behaviour 
                 ? Container(
-                    height: (MediaQuery.of(context).size.height -
+                    height: (mediaQuery.size.height -
                             appBar1.preferredSize.height -
-                            MediaQuery.of(context).padding.top) *
+                            mediaQuery.padding.top) *
                         0.7,
                     child: Chart(getRecentTransaction),
                   )
