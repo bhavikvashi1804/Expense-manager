@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
     
    
     //preferredSizeWidget to resolve problem of prefered size widget
-    final PreferredSizeWidget appBar1=Platform.isIOS?
+    final PreferredSizeWidget appBar1=Platform.isAndroid?
     CupertinoNavigationBar(
       middle: Text('Expense Manager'),
       trailing: Row(
@@ -155,7 +155,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TransactionList(_userTransactions,_deleteTransaction)
     );
 
-    final pageBody=SingleChildScrollView(
+    final pageBody=SafeArea(
+      child:SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -202,9 +203,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 : txListWidget
           ],
         ),
+      ),
     );
 
-    return Platform.isIOS?
+    return Platform.isAndroid?
       CupertinoPageScaffold(
         child: pageBody,
         navigationBar: appBar1 ,
