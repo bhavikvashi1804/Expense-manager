@@ -11,7 +11,9 @@ import './widgets/chart.dart';
 
 void main() {
   
-      runApp(new MyApp());
+   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    //this allows only portrait modes
+  runApp(new MyApp());
   
 }
 
@@ -20,8 +22,7 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    //this allows only portrait mode
+   
     return MaterialApp(
       title: 'Expense Manager',
       theme: ThemeData(
