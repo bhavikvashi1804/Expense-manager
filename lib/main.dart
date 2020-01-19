@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -120,8 +121,21 @@ class _MyHomePageState extends State<MyHomePage> {
     final isLandscape=mediaQuery.orientation==Orientation.landscape;
     
    
-
-    final appBar1=AppBar(
+    //preferredSizeWidget to resolve problem of prefered size widget
+    final PreferredSizeWidget appBar1=Platform.isIOS?
+    CupertinoNavigationBar(
+      middle: Text('Expense Manager'),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          GestureDetector(
+            onTap: ()=> _startNewTransaction(context),
+            child: Icon(CupertinoIcons.add),
+          )
+        ],
+      ),
+    )
+    :AppBar(
         title: Text('Expense Manager'),
         actions: <Widget>[
           IconButton(
@@ -141,10 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TransactionList(_userTransactions,_deleteTransaction)
     );
 
-
-    return Scaffold(
-      appBar:appBar1, 
-      body: SingleChildScrollView(
+    final pageBody=SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -191,7 +202,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 : txListWidget
           ],
         ),
-      ),
+    );
+
+    return Platform.isIOS?
+      CupertinoPageScaffold(
+        child: pageBody,
+        navigationBar: appBar1 ,
+      )
+      :Scaffold(
+      appBar:appBar1, 
+      body: pageBody,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Platform.isIOS?Container(): 
       FloatingActionButton(
