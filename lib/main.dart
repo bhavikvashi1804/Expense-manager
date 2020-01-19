@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    //this allows only portrait mode
     return MaterialApp(
       title: 'Expense Manager',
       theme: ThemeData(
