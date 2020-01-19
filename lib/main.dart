@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
     
    
     //preferredSizeWidget to resolve problem of prefered size widget
-    final PreferredSizeWidget appBar1=Platform.isAndroid?
+    final PreferredSizeWidget appBar1=Platform.isIOS?
     CupertinoNavigationBar(
       middle: Text('Expense Manager'),
       trailing: Row(
@@ -165,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Show Chart'),
+                  Text('Show Chart',style:Theme.of(context).textTheme.title),
                   Switch.adaptive(
                     //for iOS switch color
                     activeColor: Theme.of(context).accentColor,
@@ -206,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    return Platform.isAndroid?
+    return Platform.isIOS?
       CupertinoPageScaffold(
         child: pageBody,
         navigationBar: appBar1 ,
