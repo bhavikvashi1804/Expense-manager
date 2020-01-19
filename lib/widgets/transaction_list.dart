@@ -12,6 +12,7 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return _userTransactions.isEmpty
         ? Column(
             children: <Widget>[
