@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 
@@ -8,11 +9,18 @@ import './widgets/transaction_list.dart';
 import './widgets/chart.dart';
 
 
-void main() => runApp(MyApp());
+void main() {
+  
+      runApp(new MyApp());
+  
+}
+
 
 class MyApp extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       title: 'Expense Manager',
       theme: ThemeData(
