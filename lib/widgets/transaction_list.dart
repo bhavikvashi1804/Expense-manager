@@ -20,7 +20,7 @@ class TransactionList extends StatelessWidget {
                 'No Transactions',
                 style: Theme.of(context).textTheme.title,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Image.asset(
@@ -33,7 +33,7 @@ class TransactionList extends StatelessWidget {
             itemBuilder: (ctx, index) {
               return Card(
                 elevation: 5,
-                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                 child: ListTile(
                   leading: CircleAvatar(
                     radius: 30,
@@ -55,17 +55,18 @@ class TransactionList extends StatelessWidget {
                   subtitle: Text(
                     DateFormat.yMd().format(_userTransactions[index].date),
                     style: TextStyle(color: Colors.grey),
+                    //do not apply const to this text widget because its value will change according to time by that I means that its value is dynamic
                   ),
                   trailing: MediaQuery.of(context).size.width>500?
                   FlatButton.icon(
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                     textColor: Theme.of(context).errorColor,
-                    label: Text('Delete'),
+                    label: const Text('Delete'),
                     onPressed: () => deleteTx(_userTransactions[index].id),
                   )
                   :   
                   IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                     color: Theme.of(context).errorColor,
                     onPressed: () => deleteTx(_userTransactions[index].id),
                   ),
