@@ -13,6 +13,9 @@ class TransactionItem extends StatefulWidget {
     @required this.oneTransaction,
     @required this.deleteTx,
   }) :super(key: key);
+  //super method return key to the parent widget
+  //constructor intializer 
+  // check this: => https://dart.dev/guides/language/language-tour#initializer-list
 
   final Transaction oneTransaction;
   final Function deleteTx;

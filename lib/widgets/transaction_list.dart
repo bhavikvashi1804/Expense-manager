@@ -14,28 +14,36 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return _userTransactions.isEmpty
-        ? Column(
-            children: <Widget>[
-              Text(
-                'No Transactions',
-                style: Theme.of(context).textTheme.title,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Image.asset(
-                'assets/images/no_tx.png',
-                fit: BoxFit.cover,
-              ),
-            ],
-          )
-        : ListView.builder(
-            itemBuilder: (ctx, index) {
-              return TransactionItem(oneTransaction: _userTransactions[index], deleteTx: deleteTx);
-            },
-            itemCount: _userTransactions.length,
-          );
-  }
+    return _userTransactions.isEmpty? 
+    Column(
+      children: <Widget>[
+        Text(
+         'No Transactions',
+         style: Theme.of(context).textTheme.title,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Image.asset(
+          'assets/images/no_tx.png',
+          fit: BoxFit.cover,
+        ),
+      ],
+    )
+    : 
+    //first simple change ListView builder to ListView
+    ListView(
+      children: 
+        _userTransactions.map(
+          (tx)=>TransactionItem(
+            key: ValueKey(tx.id),
+            //second pass key 
+            //UniqueKey generates unique key for each item
+            //I am using my own key instead of UniqueKey 
+            oneTransaction: tx,
+            deleteTx:deleteTx)
+        ).toList(),
+    );     
+  }   
 }
 
